@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: auto;
+    // scrollbar-color: $color-primary;
+    scroll-behavior: smooth;
+    scrollbar-width: 2px;
+    // scrollbar-color: $color-tertiary;
+}
+
+// * {
+//     scrollbar-width: 2px;
+//     scrollbar-color: $color-tertiary;
+// }
+
+*::-webkit-scrollbar {
+    scrollbar-width: thin;
+    width: 2px;
+    height: 2px;
+}
+
+*::-webkit-scrollbar-track {
+    background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    // background-color: $color-tertiary;
+    border-radius: 10px;
+}
+
+input {
+    font-size: inherit;
+    color: inherit;
+}
+input label {
+    font-size: inherit;
+    color: inherit;
+}

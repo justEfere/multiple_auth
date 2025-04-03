@@ -1,4 +1,3 @@
-+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -12,7 +11,7 @@ use App\Http\Controllers\User\ProfileController;
 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
