@@ -1,0 +1,25 @@
+.form_error {
+    margin-top: 1rem;
+    color: $primary-color;
+    visibility: hidden;
+    opacity: 0;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.required::after {
+    content: "\e1eb";
+    font-family: "Material Symbols Outlined";
+    color: $primary-color;
+    font-size: $font-x;
+    font-weight: $font-thin;
+}
+
+.password_input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

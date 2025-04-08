@@ -1,0 +1,19 @@
+#password_link {
+    font-size: $font-xs;
+    text-align: right;
+
+    &:hover {
+        color: $primary-color-light;
+    }
+}
+
+.not__registered {
+    width: 100%;
+    font-size: $font-xs;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-weight: $font-semibold;
+}

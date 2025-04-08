@@ -1,0 +1,77 @@
+.authentication {
+    &__container {
+        max-width: 160rem;
+        min-width: 32rem;
+        width: 100%;
+        height: 100%;
+        background-color: $auth-bg;
+        color: $light-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__left,
+    &__right {
+        width: 50%;
+        height: 100%;
+        padding: 2rem;
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &--body {
+            width: 50%;
+            height: 50%;
+            align-self: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &-img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &--footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__email {
+        &--email {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+    &__right {
+        background-color: $light-color;
+        color: $primary-black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--contents {
+            border: 1px solid $border-color;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+
+        &--content {
+            &-header {
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+        }
+    }
+}

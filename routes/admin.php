@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\RegisterAdminController;
-use Illuminate\Support\Facades\Route;
 
 
 
 // Authentication Routes
 Route::prefix("admin")->name("admin.")->group(function () {
+
     Route::middleware("guest")->group(function () {
         Route::get("/", function () {
             return redirect()->route("admin.login");
@@ -25,7 +26,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
         Route::post('register', [RegisterAdminController::class, 'store'])->name("register");
     });
+
+    // Authenticated Routes
+    Route::middleware(['auth:admin'])->group(function () {
+        // dashboard
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard.dashboard');
+        })->name('dashboard');
+    });
 });
-
-
-// Authenticated Routes

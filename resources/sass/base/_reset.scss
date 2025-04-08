@@ -34,8 +34,39 @@
 input {
     font-size: inherit;
     color: inherit;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: none;
+
+    &:focus,
+    &:hover {
+        outline: none;
+        border: none;
+    }
+
+    &::placeholder {
+        font-family: inherit;
+        // font-size: inherit;
+        // color: inherit;
+    }
 }
-input label {
+
+label {
     font-size: inherit;
     color: inherit;
+}
+
+a {
+    color: $primary-color;
+    text-decoration: none;
+    font-family: $font-secondary;
+    font-weight: $font-regular;
+    letter-spacing: $letter-spacing-wide;
+    transition: all 0.3s;
+
+    &:hover {
+        color: $primary-color-light;
+    }
 }

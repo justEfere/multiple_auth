@@ -1,5 +1,6 @@
 // Colors
 $primary-color: #ef233c;
+$primary-color-light: #f5586b;
 $secondary-color: #724cf9;
 $success-color: #28a745;
 $danger-color: #dc3545;
@@ -7,6 +8,12 @@ $warning-color: #ffc107;
 $info-color: #17a2b8;
 $light-color: #f8f9fa;
 $dark-color: #343a40;
+$primary-black: #333a3f;
+
+// border color
+$border-color: #d0d5dd;
+
+$auth-bg: #252525;
 
 // Typography
 $font-primary: "Jura", sans-serif;
@@ -14,6 +21,7 @@ $font-secondary: "Inter", sans-serif;
 $font-monospace: "Fira Code", monospace;
 
 // Font Sizes
+$font-x: 0.625rem; /* 10px */
 $font-xs: 0.75rem; /* 12px */
 $font-sm: 0.875rem; /* 14px */
 $font-base: 1rem; /* 16px */

@@ -38,7 +38,7 @@ Route::prefix("super-admin")->name("super-admin.")->group(function () {
 
 
     // Auth Routes
-    Route::middleware('auth:super_admin')->group(function () {
+    Route::middleware(['auth:super_admin'])->group(function () {
         // Route::get('verify-email', EmailVerificationPromptController::class)
         //     ->name('verification.notice');
 

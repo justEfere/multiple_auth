@@ -1,54 +1,44 @@
-<x-guest-layout>
-    {{-- title --}}
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center py-4">
-        {{ __('Admin Login') }}
-    </h2>
+@extends('superadmin.layouts.guest')
+@section('title', 'Super Admin Login')
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
+    <main>
+        <section class="authentication__container">
+            <x-auth.auth-left />
 
-    <form method="POST" action="{{ route('super-admin.login') }}">
-        @csrf
+            <div class="authentication__right">
+                <div class="authentication__right--contents">
+                    <div class="authentication__right--mobile"></div>
+                    <div class="authentication__right--content">
+                        <div class="authentication__right--content-header">
+                            <h1 class="authentication__right--heading">
+                                Super Admin Login
+                            </h1>
+                            <p class="authentication__right--text auth-text">
+                                Provide your credentials to login
+                            </p>
+                            @if (session('status'))
+                                <p class="invalid__login  auth-text form_error active">
+                                    Invalid login credentials
+                                </p>
+                            @endif
+                        </div>
+                        <div class="authentication__right--content-form">
+                            <form action="{{ route('super-admin.login') }}" method="POST">
+                                @csrf
+                                <x-auth.form-input type="email" name="email" label="Email"
+                                    placeholder="example@email.com" required="true" />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+                                <x-auth.form-input type="password" name="password" label="Password"
+                                    placeholder="Create password" required="true" />
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                                <input type="submit" value="Sign in" class="btn sign_in">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox"
-                    class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
-                    name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('super-admin.password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection

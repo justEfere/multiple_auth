@@ -11,8 +11,6 @@
 
     <title>@yield('title', 'login')</title>
 
-
-
     @vite(['resources/sass/main.scss', 'resources/js/app.js'])
 </head>
 
