@@ -1,25 +1,44 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+@extends('superadmin.layouts.guest')
+@section('title', 'Super Admin Request Password')
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
+    <main>
+        <section class="authentication__container">
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+            <x-auth.auth-left />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+            <div class="authentication__right">
+                <div class="authentication__right--contents">
+                    <div class="authentication__right--mobile"></div>
+                    <div class="authentication__right--content">
+                        <div class="authentication__right--content-header">
+                            <h1 class="authentication__right--heading">
+                                SuperAdmin Password Reset
+                            </h1>
+                            <p class="authentication__right--text auth-text">
+                                Enter your registered email for code
+                            </p>
+                            @if (session('status'))
+                                <p class="invalid__login  auth-text form_error active">
+                                    {{ session('status') }}
+                                </p>
+                            @endif
+                        </div>
+                        <div class="authentication__right--content-form">
+                            <form action="{{ route('super-admin.password.email') }}" method="POST">
+                                @csrf
+                                <x-auth.form-input type="email" name="email" label="Email"
+                                    placeholder="example@email.com" required="true" />
+                                <input type="submit" value="Verify" class="btn sign_in">
+                                <div class="not__registered">
+                                    <p>Sure of your account?</p>
+                                    <a href="{{ route('super-admin.login') }}" id="signup_link">Log-in</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection

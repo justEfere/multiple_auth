@@ -12,9 +12,11 @@ use App\Http\Controllers\SuperAdmin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\SuperAdmin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\SuperAdmin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\SuperAdmin\Auth\EmailVerificationNotificationController;
+// use App\Models\SuperAdmin;
 
+// $adminRoute = SuperAdmin::first()->name ?? "superadmin";
 
-Route::prefix("super-admin")->name("super-admin.")->group(function () {
+Route::prefix('superadmin')->name("super-admin.")->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get("/", function () {
             return redirect()->route("super-admin.login");

@@ -2,8 +2,8 @@
     <label for="{{ $name }}" class="{{ $required ? 'required' : '' }}">{{ $label }}</label>
     <div class="input__container {{ $type === 'password' ? 'password_input' : '' }}">
         <input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}"
-            class="{{ $type === 'email' ? 'email__input' : 'text__input' }}" placeholder="{{ $placeholder }}"
-            {{ $required ? 'required' : '' }}>
+            class="{{ $type === 'email' ? 'email__input' : 'text__input' }}" value="{{ $value }}"
+            placeholder="{{ $placeholder }}" {{ $required ? 'required' : '' }}>
 
         @if ($type === 'password')
             <div class="view_pswrd">
@@ -19,7 +19,7 @@
                 <a href="{{ route('super-admin.password.request') }}" class="forgot_password" id="password_link">
                     Forgot Password?
                 </a>
-            @elseif(request()->routeIs('admin.password.request'))
+            @elseif(request()->routeIs('admin.login'))
                 <a href="{{ route('admin.password.request') }}" class="forgot_password" id="password_link">
                     Forgot Password?
                 </a>

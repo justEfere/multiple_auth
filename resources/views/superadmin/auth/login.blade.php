@@ -19,7 +19,7 @@
                             </p>
                             @if (session('status'))
                                 <p class="invalid__login  auth-text form_error active">
-                                    Invalid login credentials
+                                    {{ session('status') }}
                                 </p>
                             @endif
                         </div>

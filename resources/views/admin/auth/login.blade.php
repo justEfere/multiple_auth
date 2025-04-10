@@ -20,7 +20,7 @@
                             </p>
                             @if (session('status'))
                                 <p class="invalid__login  auth-text form_error active">
-                                    Invalid login credentials
+                                    {{ session('status') }}
                                 </p>
                             @endif
                         </div>
@@ -28,7 +28,7 @@
                             <form action="{{ route('admin.login.create') }}" method="POST">
                                 @csrf
                                 <x-auth.form-input type="email" name="email" label="Email"
-                                    placeholder="example@email.com" required="true" />
+                                    placeholder="example@email.com" required="true" value="{{ old('email') }}" />
 
                                 <x-auth.form-input type="password" name="password" label="Password"
                                     placeholder="Create password" required="true" />
