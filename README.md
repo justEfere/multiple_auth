@@ -74,6 +74,12 @@ Seeders will create the default **Super Admin**, **Admin**, and **User** roles.
 php artisan serve
 ```
 
+If image is not loading, run storage link
+
+```bash
+php artisan storage:link
+```
+
 Access the app at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Default User Roles
