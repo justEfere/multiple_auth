@@ -37,8 +37,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
     // Authenticated Routes
     Route::middleware(['auth:admin'])->group(function () {
         // dashboard
-        Route::get('/dashboard', function () {
+        Route::get('dashboard', function () {
             return view('admin.dashboard.dashboard');
         })->name('dashboard');
+
+        // log out
+        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+            ->name('logout');
     });
 });

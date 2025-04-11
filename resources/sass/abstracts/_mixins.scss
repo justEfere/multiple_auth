@@ -1,0 +1,11 @@
+@mixin respond($size, $type: max) {
+    @if $type == max {
+        @media (max-width: map-get($breakpoints, $size)) {
+            @content;
+        }
+    } @else if $type == min {
+        @media (min-width: map-get($breakpoints, $size)) {
+            @content;
+        }
+    }
+}

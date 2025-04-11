@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('super-admin.dashboard', absolute: false));
+        return redirect()->route('super-admin.dashboard');
     }
 
     /**
@@ -42,6 +42,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('super-admin.logout');
+        return redirect()->route('super-admin.login');
     }
 }

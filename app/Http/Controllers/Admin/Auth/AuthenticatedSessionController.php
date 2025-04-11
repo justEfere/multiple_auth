@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\AdminLoginRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Auth\AdminLoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -16,8 +18,6 @@ class AuthenticatedSessionController extends Controller
 
     public function store(AdminLoginRequest $request)
     {
-        // dd($request->all());
-
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -29,5 +29,20 @@ class AuthenticatedSessionController extends Controller
         // authenticate and start session
         // check if admin status is okay
         // check if admin has 2fa
+    }
+
+
+    /**
+     * Destroy an authenticated session.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }

@@ -1,6 +1,11 @@
 html {
     font-family: $font-primary;
     font-weight: $font-semibold;
+    font-size: $font-base;
+
+    @include respond("xs") {
+        font-size: $font-x;
+    }
 }
 
 body {
